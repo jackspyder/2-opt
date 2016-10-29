@@ -1,8 +1,11 @@
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <GridPane fx:controller="sample.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Label text="This is my label" fx:id="firstLabel" GridPane.valignment="TOP"/>
+    <Label text="${firstLabel.text}" GridPane.valignment="BOTTOM"/>
+
 </GridPane>
