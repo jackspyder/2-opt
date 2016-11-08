@@ -23,5 +23,4 @@ public class Length {
         }
         return result;
     }
-
 }
