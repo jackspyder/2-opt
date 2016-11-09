@@ -6,9 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by jacks on 04/11/2016.
- */
 public class Load {
     public static ArrayList<Point2D> loadTSPLib(String fName) {
         /*
