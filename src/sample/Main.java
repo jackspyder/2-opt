@@ -24,13 +24,25 @@ public class Main extends Application {
     public static void main(String[] args) {
         // launch(args);
 
-        ArrayList<Point2D> cities = new ArrayList<>(Load.loadTSPLib("rl10.tsp"));
+        ArrayList<Point2D> cities = new ArrayList<>(Load.loadTSPLib("rl100.tsp"));
         ArrayList<Point2D> result;
 
-        System.out.println(cities);
+        double preLength = Length.routeLength(cities);
+
+
+
+
         result = Neighbour.nearest(cities);
 
-        System.out.println(result);
+        double postLength = Length.routeLength(result);
+
+        for(Point2D temp: result){
+            System.out.println(temp);
+        }
+
+        System.out.println("Pre Length is: " + preLength);
+        System.out.println("Post Length is: " + postLength);
+
 
 
 
