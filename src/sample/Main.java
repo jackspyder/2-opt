@@ -28,10 +28,7 @@ public class Main extends Application {
         ArrayList<Point2D> result;
 
         double preLength = Length.routeLength(cities);
-
-
-
-
+        System.out.println(cities.size());
         result = Neighbour.nearest(cities);
 
         double postLength = Length.routeLength(result);
@@ -39,7 +36,8 @@ public class Main extends Application {
         for(Point2D temp: result){
             System.out.println(temp);
         }
-
+        Validator.validate(result);
+        System.out.println(result.size());
         System.out.println("Pre Length is: " + preLength);
         System.out.println("Post Length is: " + postLength);
 
