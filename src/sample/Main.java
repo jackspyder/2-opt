@@ -25,7 +25,7 @@ public class Main extends Application {
         // launch(args);
 
         ArrayList<Point2D> cities = new ArrayList<>(Load.loadTSPLib("rl10.tsp"));
-        ArrayList<Point2D> result = new ArrayList<>();
+        ArrayList<Point2D> result;
 
         System.out.println(cities);
         result = Neighbour.nearest(cities);
