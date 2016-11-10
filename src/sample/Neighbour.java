@@ -1,38 +1,43 @@
 package sample;
 
+
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class Neighbour {
-    protected static ArrayList<Point2D> nearest(ArrayList<Point2D> cities) {
-        ArrayList<Point2D> result = new ArrayList<>(); //resulting nearest neighbour arraylist.
-        Point2D currentCity;
-        Point2D closestCity;
-        double shortest = Double.MAX_VALUE;
-        currentCity = cities.remove(0);
-        closestCity = cities.get(0);
-        System.out.println("Start City: " + currentCity + " closest " + closestCity);
+    public static ArrayList<Point2D> nearest(ArrayList<Point2D> cities){
+        ArrayList<Point2D> result = new ArrayList();
+        int j;
+        Point2D currentCity = cities.remove(0);
+        Point2D closestCity = cities.get(0);
+        Point2D possible;
+        double dist;
 
-        for (Point2D outer : cities) {
-            System.out.println("Outer City: " + outer); // must clone arrays, removal of an item during inner causes outer to break!!!
-            result.add(currentCity);
-            for (Point2D inner : cities) {
-                System.out.println("inner " + inner);
-                if (currentCity.distance(inner) < shortest) {
-                    closestCity = inner;
-                    shortest = currentCity.distance(inner);
-                    System.out.println("current " + currentCity + " plus inner " + inner + " is " + shortest);
+        result.add(currentCity);
+
+        while (cities.size() > 0) {
+
+            dist = Double.MAX_VALUE;
+
+            for (j = 0; j < cities.size(); j++) {
+                possible = cities.get(j);
+                if (currentCity.distance(possible) < dist) {
+
+                    dist = currentCity.distance(possible);
+                    closestCity = possible;
                 }
-            }
-            cities.remove(closestCity);
-            currentCity = closestCity;
-            closestCity = cities.get(0);
-            shortest = Double.MAX_VALUE;
-            System.out.println("Shortest is: " + shortest);
-            System.out.println("The current City is now: " + currentCity);
 
+
+            }
+            currentCity = closestCity;
+            cities.remove(closestCity);
+            result.add(currentCity);
         }
-        System.out.println("Optimised route is: " + result);
         return result;
     }
 }
+
+
+
+
+
