@@ -9,7 +9,7 @@ public class TwoOpt {
         double bestDist = Length.routeLength(cities);
         double newDist;
         int improve = 0;
-        int comparisons = 0;
+        long comparisons = 0;
 
         for (int i = 1; i < cities.size() - 2; i++) {
             for (int j = i + 1; j < cities.size() - 1; j++) {
@@ -40,19 +40,20 @@ public class TwoOpt {
         double newDist;
         int swaps = 1;
         int improve = 0;
-        int comparisons = 0;
+        long comparisons = 0;
 
         while (swaps != 0) {
             swaps = 0;
             for (int i = 1; i < cities.size() - 2; i++) {
                 for (int j = i + 1; j < cities.size() - 1; j++) {
+                    comparisons++;
                     if ((cities.get(i).distance(cities.get(i - 1)) + cities.get(j + 1).distance(cities.get(j))) >=
                             (cities.get(i).distance(cities.get(j + 1)) + cities.get(i - 1).distance(cities.get(j)))) {
 
                         newTour = swap(cities, i, j);
 
                         newDist = Length.routeLength(newTour);
-                        comparisons++;
+
                         if (newDist < bestDist) {
                             cities = newTour;
                             bestDist = newDist;
