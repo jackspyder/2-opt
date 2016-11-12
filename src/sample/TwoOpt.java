@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class TwoOpt {
     public static ArrayList<Point2D> optimise(ArrayList<Point2D> cities) {
-        ArrayList<Point2D> newTour;
+        ArrayList<Point2D> newTour = new ArrayList<Point2D>(5915);
         double bestDist = Length.routeLength(cities);
         double newDist;
         int improve = 0;
@@ -35,7 +35,7 @@ public class TwoOpt {
 
     public static ArrayList<Point2D> alternate(ArrayList<Point2D> cities) {
 
-        ArrayList<Point2D> newTour;
+        ArrayList<Point2D> newTour = new ArrayList<Point2D>(5915);
         double bestDist = Length.routeLength(cities);
         double newDist;
         int swaps = 1;
@@ -72,7 +72,7 @@ public class TwoOpt {
 
     private static ArrayList<Point2D> swap(ArrayList<Point2D> cities, int i, int j) {
 
-        ArrayList<Point2D> newTour = new ArrayList<>();
+        ArrayList<Point2D> newTour = new ArrayList<>(5915);
 
         int size = cities.size();
         //

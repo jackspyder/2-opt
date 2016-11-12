@@ -16,7 +16,7 @@ public class Load {
         modify the this code
         */
 
-        ArrayList<Point2D> result = new ArrayList<Point2D>();
+        ArrayList<Point2D> result = new ArrayList<Point2D>(5915);
         BufferedReader br = null;
         try {
             String currentLine;

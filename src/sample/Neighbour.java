@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Neighbour {
     protected static ArrayList<Point2D> nearest(ArrayList<Point2D> cities){
 
-        ArrayList<Point2D> result = new ArrayList<>(); //holds final result.
+        ArrayList<Point2D> result = new ArrayList<>(5915); //holds final result.
         Point2D currentCity = cities.remove(0); //set current city to first array item.
         Point2D closestCity = cities.get(0); //set closest city to new first array item.
         Point2D possible; //for holding possible city.
