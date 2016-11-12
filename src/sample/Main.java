@@ -25,28 +25,30 @@ public class Main extends Application {
         // launch(args);
 
         ArrayList<Point2D> cities = new ArrayList<>(Load.loadTSPLib("rl100.tsp"));
+        ArrayList<Point2D> nearestN;
         ArrayList<Point2D> result;
 
-        double preLength = Length.routeLength(cities);
-        System.out.println(cities.size());
-        result = Neighbour.nearest(cities);
+        double length = Length.routeLength(cities);
+        System.out.println("Initial tour length is: " + length);
 
-        double postLength = Length.routeLength(result);
+        System.out.println("Generating Nearest Neighbour Solution...");
+        nearestN = Neighbour.nearest(cities);
+        length = Length.routeLength(nearestN);
+        System.out.println("Nearest neighbour solution complete, distance: " + length);
+        System.out.println("Validating solution...");
+        Validator.validate(nearestN);
 
-        for(Point2D temp: result){
-            System.out.println(temp);
-        }
+        System.out.println("Attempting 2-opt optimisation...");
+        result = TwoOpt.optimise(nearestN);
+        length = Length.routeLength(result);
+        System.out.println("2-opt solution complete, distance: " + length);
+        System.out.println("Validating solution...");
         Validator.validate(result);
-        System.out.println(result.size());
-        System.out.println("Pre Length is: " + preLength);
-        System.out.println("Post Length is: " + postLength);
 
-
-
+        System.out.println("Resulting tour node count: " + result.size());
 
 
     }
-
 
 
 }
