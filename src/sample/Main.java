@@ -1,33 +1,17 @@
 package sample;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-
-public class Main extends Application {
-
-
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
+public class Main {
 
     public static void main(String[] args) {
-        // launch(args);
 
         double startTime = System.currentTimeMillis();
-        ArrayList<Point2D> cities = new ArrayList<>(Load.loadTSPLib("rl3000.tsp"));
+        ArrayList<Point2D> cities = new ArrayList<>(Load.loadTSPLib("rl5915.tsp"));
         ArrayList<Point2D> nearestN = new ArrayList<Point2D>(5915);
-        ArrayList<Point2D> result = new ArrayList<Point2D>(5915);;
+        ArrayList<Point2D> result = new ArrayList<Point2D>(5915);
+
 
         double length = Length.routeLength(cities);
         System.out.println("Initial tour length is: " + length);
@@ -64,7 +48,6 @@ public class Main extends Application {
         System.out.println("Time taken for 2 opt alternate: " + time);
 
         System.out.println("Resulting tour node count: " + result.size());
-
 
 
     }

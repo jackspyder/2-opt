@@ -10,20 +10,25 @@ public class TwoOpt {
         double newDist;
         int improve = 0;
         long comparisons = 0;
+        int swaps = 1;
 
-        for (int i = 1; i < cities.size() - 2; i++) {
-            for (int j = i + 1; j < cities.size() - 1; j++) {
+        while (swaps != 0) {
+            swaps = 0;
+            for (int i = 0; i < cities.size() - 1; i++) {
+                for (int j = i + 1; j < cities.size(); j++) {
 
-                newTour = swap(cities, i, j);
-                comparisons++;
-                newDist = Length.routeLength(newTour);
-                if (newDist < bestDist) {
-                    cities = newTour;
-                    bestDist = newDist;
-                    improve++;
-                    System.out.println("Comparisons made: " + comparisons);
-                    System.out.println("Improvements made: " + improve);
+                    newTour = swap(cities, i, j);
+                    comparisons++;
+                    newDist = Length.routeLength(newTour);
+                    if (newDist < bestDist) {
+                        cities = newTour;
+                        bestDist = newDist;
+                        improve++;
+                        swaps++;
+                        System.out.println("Comparisons made: " + comparisons);
+                        System.out.println("Improvements made: " + improve);
 
+                    }
                 }
             }
         }
@@ -45,7 +50,7 @@ public class TwoOpt {
         while (swaps != 0) {
             swaps = 0;
             for (int i = 1; i < cities.size() - 2; i++) {
-                for (int j = i + 1; j < cities.size() - 1; j++) {
+                for (int j = i + 1; j < cities.size() -1 ; j++) {
                     comparisons++;
                     if ((cities.get(i).distance(cities.get(i - 1)) + cities.get(j + 1).distance(cities.get(j))) >=
                             (cities.get(i).distance(cities.get(j + 1)) + cities.get(i - 1).distance(cities.get(j)))) {
@@ -75,7 +80,6 @@ public class TwoOpt {
         ArrayList<Point2D> newTour = new ArrayList<>(5915);
 
         int size = cities.size();
-        //
         for (int c = 0; c <= i - 1; c++) {
             newTour.add(cities.get(c));
         }
