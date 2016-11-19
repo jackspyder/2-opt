@@ -4,11 +4,12 @@ package sample;
 run a nearest neighbour on the passed in ArrayList
 return the nearest neighbour result.
  */
+
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class Neighbour {
-    protected static ArrayList<Point2D> nearest(ArrayList<Point2D> cities){
+    protected static ArrayList<Point2D> nearest(ArrayList<Point2D> cities) {
 
         ArrayList<Point2D> result = new ArrayList<>(); //holds final result.
         Point2D currentCity = cities.remove(0); //set current city to first array item.
