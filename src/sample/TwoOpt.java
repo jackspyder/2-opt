@@ -4,9 +4,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class TwoOpt {
-
     public static ArrayList<Point2D> alternate(ArrayList<Point2D> cities) {
-
         ArrayList<Point2D> newTour;
         double bestDist = Length.routeLength(cities);
         double newDist;
@@ -36,7 +34,6 @@ public class TwoOpt {
                             swaps++;
                             improve++;
                         }
-
                     }
                 }
             }

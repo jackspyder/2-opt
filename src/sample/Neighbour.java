@@ -5,8 +5,8 @@ run a nearest neighbour on the passed in ArrayList
 return the nearest neighbour result.
  */
 
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
+        import java.awt.geom.Point2D;
+        import java.util.ArrayList;
 
 public class Neighbour {
     protected static ArrayList<Point2D> nearest(ArrayList<Point2D> cities) {
