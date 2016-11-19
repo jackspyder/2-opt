@@ -4,47 +4,15 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class TwoOpt {
-    public static ArrayList<Point2D> optimise(ArrayList<Point2D> cities) {
-        ArrayList<Point2D> newTour = new ArrayList<Point2D>(5915);
-        double bestDist = Length.routeLength(cities);
-        double newDist;
-        int improve = 0;
-        long comparisons = 0;
-        int swaps = 1;
-
-        while (swaps != 0) {
-            swaps = 0;
-            for (int i = 0; i < cities.size() - 1; i++) {
-                for (int j = i + 1; j < cities.size(); j++) {
-
-                    newTour = swap(cities, i, j);
-                    comparisons++;
-                    newDist = Length.routeLength(newTour);
-                    if (newDist < bestDist) {
-                        cities = newTour;
-                        bestDist = newDist;
-                        improve++;
-                        swaps++;
-                        System.out.println("Comparisons made: " + comparisons);
-                        System.out.println("Improvements made: " + improve);
-
-                    }
-                }
-            }
-        }
-
-        System.out.println("Total comparisons made: " + comparisons);
-        System.out.println("Total improvements made: " + improve);
-        return cities;
-    }
 
     public static ArrayList<Point2D> alternate(ArrayList<Point2D> cities) {
 
-        ArrayList<Point2D> newTour = new ArrayList<Point2D>(5915);
+        ArrayList<Point2D> newTour;
         double bestDist = Length.routeLength(cities);
         double newDist;
         int swaps = 1;
         int improve = 0;
+        int iterations = 0;
         long comparisons = 0;
 
         while (swaps != 0) {
@@ -69,15 +37,17 @@ public class TwoOpt {
                     }
                 }
             }
+            iterations++;
         }
         System.out.println("Total comparisons made: " + comparisons);
         System.out.println("Total improvements made: " + improve);
+        System.out.println("Total iterations made: " + iterations);
         return cities;
     }
 
     private static ArrayList<Point2D> swap(ArrayList<Point2D> cities, int i, int j) {
 
-        ArrayList<Point2D> newTour = new ArrayList<>(5915);
+        ArrayList<Point2D> newTour = new ArrayList<>();
 
         int size = cities.size();
         for (int c = 0; c <= i - 1; c++) {
